@@ -5,7 +5,8 @@ using UnityEngine;
 public class GridGenerator : MonoBehaviour
 {
 
-    [SerializeField] static int x, y;
+    public int x, y;
+
     [SerializeField] float distanceBetweenEachTileX, distanceBetweenEachTileY;
     [SerializeField] float startingPointX, startingPointY;
     [SerializeField] GameObject Tile;
@@ -20,17 +21,27 @@ public class GridGenerator : MonoBehaviour
     private int _randomEnemyX, _randomEnemyY;
     private Vector3 _fireLoca, _enemyLoca;
 
+    public static int[,] Grid;
+
     //when the scene loads, the grid should be generated, hence using start
     void Start()
     {
-      
+
+        Grid = new int[x, y];
+        Grid[0, 0] = 1;
+        for(int i=0; i<x; i++)
+        {
+            for(int j=0; j<y; j++)
+            {
+                Grid[i,j] = 1;
+            }
+        }
         StartCoroutine(SpawnTiles());
         
     }
 
     IEnumerator SpawnTiles()
     {
-
 
         //instantiating random FireBlock and Enemy
 
@@ -40,8 +51,10 @@ public class GridGenerator : MonoBehaviour
             _randomFireX = Random.Range(1, y - 1); //ignoring first and last spots
             _randomFireY = Random.Range(1, x - 1);
             _fireLoca = new Vector3(startingPointX + distanceBetweenEachTileX * _randomFireX, startingPointY + distanceBetweenEachTileY * -_randomFireY, 0);
-            Instantiate(FireBlock, _fireLoca, FireBlock.transform.rotation);
+           GameObject _fireb=  Instantiate(FireBlock, _fireLoca, FireBlock.transform.rotation);
+            _fireb.transform.parent = transform;
             _firecount++;
+            Grid[_randomFireY, _randomFireX] = 0;
         }
 
         while (_enemycount < EnemyCount)
@@ -50,9 +63,11 @@ public class GridGenerator : MonoBehaviour
             _randomEnemyX = Random.Range(1, y - 1); //ignoring first and last spots
             _randomEnemyY = Random.Range(1, x - 1);
             _enemyLoca = new Vector3(startingPointX + distanceBetweenEachTileX * _randomEnemyX, startingPointY + (distanceBetweenEachTileY + .3f) * -_randomEnemyY, -1);
-            Instantiate(Enemy, _enemyLoca, FireBlock.transform.rotation);
+           GameObject _enemy= Instantiate(Enemy, _enemyLoca, FireBlock.transform.rotation);
+            _enemy.transform.parent = transform;
             _enemycount++;
         }
+
 
 
         for (int i = 0; i < x; i++)
@@ -74,7 +89,9 @@ public class GridGenerator : MonoBehaviour
                 //instantiating Player
                 if (i == 0 && j == 0)
                 {
-                    Instantiate(Player, _pos, Quaternion.identity);
+                  GameObject _player=  Instantiate(Player, new Vector3(startingPointX + distanceBetweenEachTileX * j, startingPointY + (distanceBetweenEachTileY * -i),-1), Quaternion.identity);
+                    _player.transform.parent = transform;
+
                 }
 
 
@@ -84,11 +101,12 @@ public class GridGenerator : MonoBehaviour
 
                 if(i==x-1 && j==y-1)
                 {
-                    Instantiate(Exit, _pos, Exit.transform.rotation);
+                  GameObject _portal =   Instantiate(Exit, _pos, Exit.transform.rotation);
+                    _portal.transform.parent = transform;
 
                 }
 
-
+             
 
 
             }
