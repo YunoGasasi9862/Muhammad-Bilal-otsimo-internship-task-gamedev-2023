@@ -101,7 +101,8 @@ public class GridGenerator : MonoBehaviour
 
                 if(i==x-1 && j==y-1)
                 {
-                  GameObject _portal =   Instantiate(Exit, _pos, Exit.transform.rotation);
+                    Grid[i, j] = 2;
+                    GameObject _portal =   Instantiate(Exit, new Vector3(startingPointX + distanceBetweenEachTileX * j, startingPointY + (distanceBetweenEachTileY * -i), -1), Exit.transform.rotation);
                     _portal.transform.parent = transform;
 
                 }

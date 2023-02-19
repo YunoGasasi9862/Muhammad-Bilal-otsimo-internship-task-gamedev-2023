@@ -70,6 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridGenerator: {fileID: 4743121454323335220, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
   grid: {fileID: 4743121454323335222, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
+  nextLevel: {fileID: 7462595141307423813, guid: 22bc383ede2690144b6570ce19a01b86, type: 3}
+  moves: 0
+  _moveScore: {fileID: 6231942888144587151, guid: 83b79e69ef87af24ab23caaec2b7059f, type: 3}
 --- !u!61 &-4192080854939211208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83,7 +86,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.7547114}
+  m_Offset: {x: 0.0042995214, y: 1.3299035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -94,7 +97,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 4.509423}
+  m_Size: {x: 0.88, y: 1.6889459}
   m_EdgeRadius: 0
 --- !u!50 &8562378173878973101
 Rigidbody2D:

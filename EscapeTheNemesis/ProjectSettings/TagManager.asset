@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Grid
+  - Portal
+  - FxTemporaire
+  - MoveNum
   layers:
   - Default
   - TransparentFX

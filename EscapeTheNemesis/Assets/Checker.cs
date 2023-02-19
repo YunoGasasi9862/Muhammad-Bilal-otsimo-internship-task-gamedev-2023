@@ -6,6 +6,7 @@ public class Checker : MonoBehaviour
 {
     [SerializeField] GameObject UI;
     [SerializeField] GameObject Grid;
+    [SerializeField] GameObject nextLevel;
 
     // Update is called once per frame
     void Update()
@@ -14,6 +15,13 @@ public class Checker : MonoBehaviour
         {
             UI.SetActive(true);
             Grid.SetActive(false);
+        }
+
+        if(PlayerControllerScript._progress)
+        {
+            Grid.SetActive(false);
+            nextLevel.SetActive(true);
+
         }
     }
 }

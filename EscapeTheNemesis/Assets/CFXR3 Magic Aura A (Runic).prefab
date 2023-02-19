@@ -5009,10 +5009,9 @@ GameObject:
   - component: {fileID: 2788692994141145672}
   - component: {fileID: 2788692994141145719}
   - component: {fileID: 2788692994141145674}
-  - component: {fileID: 807784003843925204}
   m_Layer: 0
   m_Name: CFXR3 Magic Aura A (Runic)
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5025,7 +5024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2788692994141145718}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.33}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -9962,19 +9961,6 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 1
   fadeOutReference: {fileID: 2788692994141145719}
---- !u!65 &807784003843925204
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788692994141145718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4425013, y: 0.3137315, z: 2.442501}
-  m_Center: {x: 0, y: -0.46438473, z: 0.000000099341065}
 --- !u!1 &2788692994307488492
 GameObject:
   m_ObjectHideFlags: 0

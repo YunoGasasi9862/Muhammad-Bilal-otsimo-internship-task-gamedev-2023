@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 
 public class PlayerControllerScript : MonoBehaviour
 {
@@ -10,6 +12,11 @@ public class PlayerControllerScript : MonoBehaviour
     [SerializeField] GameObject grid;
     private int xAxis=0, yAxis=0;
     private Animator _anim;
+    [SerializeField] GameObject nextLevel;
+    public static bool _progress=false;
+    private bool canWalk = true;
+    public int moves = 0;
+    private TextMeshProUGUI _moveScore;
    
  
     private void Start()
@@ -17,66 +24,14 @@ public class PlayerControllerScript : MonoBehaviour
         _x = _gridGenerator.x;
         _y = _gridGenerator.y;
        _anim= GetComponent<Animator>();
+        _moveScore=GameObject.FindWithTag("MoveNum").GetComponent<TextMeshProUGUI>();
         
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            transform.rotation = new Quaternion(0, 0, 0, 0);
 
-
-                    if (yAxis < _y-1 && GridGenerator.Grid[xAxis,yAxis+1]==1 )
-                    {
-                          yAxis++;
-                      
-                        transform.Translate(1.2f, 0, 0);
-                         Debug.Log(GridGenerator.Grid[xAxis, yAxis]);
-                        
-                    }
-
-         
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.rotation=new Quaternion(0,180,0,0);
-            if (yAxis > 0 && GridGenerator.Grid[xAxis, yAxis-1] == 1)
-            {
-                yAxis--;
-                transform.Translate(1.2f, 0, 0);
-                Debug.Log(GridGenerator.Grid[xAxis, yAxis]);
-
-
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            if (xAxis > 0 && GridGenerator.Grid[xAxis-1, yAxis] == 1)
-            {
-                xAxis--;
-                transform.Translate(0,1.2f, 0);
-                Debug.Log(GridGenerator.Grid[xAxis, yAxis]);
-
-
-            }
-           
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (xAxis < _x-1 && GridGenerator.Grid[xAxis+1, yAxis] == 1)
-            {
-                xAxis++;
-                transform.Translate(0, -1.2f, 0);
-
-                Debug.Log(GridGenerator.Grid[xAxis, yAxis]);
-
-            }
-            
-        }
+        Movement();
+        _moveScore.text= moves.ToString("0");
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -101,7 +56,107 @@ public class PlayerControllerScript : MonoBehaviour
 
         }
 
+
+        
+
        
+    }
+
+    public void Movement()
+    {
+        if(canWalk)
+        {
+
+        
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+
+
+            if (yAxis < _y - 1 && (GridGenerator.Grid[xAxis, yAxis + 1] == 1 || GridGenerator.Grid[xAxis, yAxis + 1] == 2))
+            {
+
+                yAxis++;
+                    moves++;
+                transform.Translate(1.2f, 0, 0);
+
+
+                if (GridGenerator.Grid[xAxis, yAxis] == 2)
+                {
+                   GameObject _temp= Instantiate(nextLevel, transform.position, Quaternion.identity);
+                        canWalk = false;
+                         Destroy(_temp, 3f);
+                        Invoke("Progression", 2f);
+
+
+                    }
+
+
+
+
+
+
+                }
+
+
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            transform.rotation = new Quaternion(0, 180, 0, 0);
+            if (yAxis > 0 && (GridGenerator.Grid[xAxis, yAxis - 1] == 1 || GridGenerator.Grid[xAxis, yAxis - 1] == 2))
+            {
+
+                yAxis--;
+                    moves++;
+
+                    transform.Translate(1.2f, 0, 0);
+
+
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (xAxis > 0 && (GridGenerator.Grid[xAxis - 1, yAxis] == 1 || GridGenerator.Grid[xAxis - 1, yAxis] == 2))
+            {
+                xAxis--;
+                    moves++;
+
+                    transform.Translate(0, 1.2f, 0);
+
+
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (xAxis < _x - 1 && (GridGenerator.Grid[xAxis + 1, yAxis] == 1 || GridGenerator.Grid[xAxis + 1, yAxis] == 2))
+            {
+                xAxis++;
+                    moves++;
+
+                    transform.Translate(0, -1.2f, 0);
+                if (GridGenerator.Grid[xAxis, yAxis] == 2)
+                {
+                    GameObject _temp= Instantiate(nextLevel, transform.position, Quaternion.identity);
+                        canWalk = false;
+
+                        Destroy(_temp, 3f);
+                        Invoke("Progression", 2f);
+
+
+                }
+
+            }
+
+
+
+             }
+
+        }
     }
 
   
@@ -113,5 +168,18 @@ public class PlayerControllerScript : MonoBehaviour
 
             
         }
+
+       
+        
     }
+
+    public void Progression()
+    {
+        _progress = true;
+
+    }
+
+
+
+
 }
