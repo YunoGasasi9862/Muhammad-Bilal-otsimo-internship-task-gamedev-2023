@@ -9,6 +9,12 @@ public class Checker : MonoBehaviour
     [SerializeField] GameObject nextLevel;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        PlayerControllerScript._progress = false;
+
+    }
     void Update()
     {
         if(GameObject.FindWithTag("Player")==null && Time.time>1f)
@@ -22,6 +28,12 @@ public class Checker : MonoBehaviour
             Grid.SetActive(false);
             nextLevel.SetActive(true);
 
+        }
+
+        if(!PlayerControllerScript._progress) {
+
+            Grid.SetActive(true);
+            nextLevel.SetActive(false);
         }
     }
 }
