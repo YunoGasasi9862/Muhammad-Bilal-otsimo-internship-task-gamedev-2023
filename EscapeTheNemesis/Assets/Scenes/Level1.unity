@@ -505,10 +505,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GridGenerator
       objectReference: {fileID: 0}
-    - target: {fileID: 7606896275581493075, guid: cbc2dd23bcd236a4c9a3154994cc127d, type: 3}
-      propertyPath: distanceBetweenEachTileY
-      value: 1.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc2dd23bcd236a4c9a3154994cc127d, type: 3}
 --- !u!1001 &846882391
@@ -804,6 +800,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1600092007, guid: 203e727d908c3e64a8f1b88950c5ec26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 846882392}
     - target: {fileID: 1880234134, guid: 203e727d908c3e64a8f1b88950c5ec26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -11,6 +11,7 @@ TagManager:
   - MoveNum
   - GridVariant
   - LevelNUM
+  - Powerup
   layers:
   - Default
   - TransparentFX

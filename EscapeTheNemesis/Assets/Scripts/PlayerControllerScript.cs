@@ -28,7 +28,7 @@ public class PlayerControllerScript : MonoBehaviour
         yAxis = 0;
        _anim= GetComponent<Animator>();
         _moveScore=GameObject.FindWithTag("MoveNum").GetComponent<TextMeshProUGUI>();
-
+        _anim.SetBool("idle", true);
 
         
     }
@@ -179,6 +179,13 @@ public class PlayerControllerScript : MonoBehaviour
             
         }
 
+        if(collision.CompareTag("Powerup"))
+        {
+            moves -= 3;
+            GameObject _temp = Instantiate(nextLevel, transform.position, Quaternion.identity);
+            Destroy(collision.gameObject,.4f);
+            Destroy(_temp, 1f);
+        }
        
         
     }

@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class Objectives : MonoBehaviour
 {
-    public static int LEVEL1MOVES = 11;
+    public static int LEVEL1MOVES = 10;
     public static int LEVEL2MOVES = 14;
-    public static int LEVEL3MOVES = 16;
-    public static int LEVEL4MOVES = 17;
+    public static int LEVEL3MOVES = 15;
+    public static int LEVEL4MOVES = 16;
 
     [SerializeField] TextMeshProUGUI _levelObjective;
 
