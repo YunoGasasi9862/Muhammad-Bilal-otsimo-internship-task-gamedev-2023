@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class GridGenerator : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class GridGenerator : MonoBehaviour
         StartCoroutine(SpawnTiles());
         
     }
+ 
 
     IEnumerator SpawnTiles()
     {
@@ -47,9 +49,15 @@ public class GridGenerator : MonoBehaviour
 
         while (_firecount < FireCount)
         {
-
+            
             _randomFireX = Random.Range(1, y - 1); //ignoring first and last spots
             _randomFireY = Random.Range(1, x - 1);
+            while (Grid[_randomFireY, _randomFireX]==0)
+            {
+
+                _randomFireX = Random.Range(1, y - 1); 
+                _randomFireY = Random.Range(1, x - 1);
+            }
             _fireLoca = new Vector3(startingPointX + distanceBetweenEachTileX * _randomFireX, startingPointY + distanceBetweenEachTileY * -_randomFireY, 0);
            GameObject _fireb=  Instantiate(FireBlock, _fireLoca, FireBlock.transform.rotation);
             _fireb.transform.parent = transform;
@@ -62,10 +70,17 @@ public class GridGenerator : MonoBehaviour
 
             _randomEnemyX = Random.Range(1, y - 1); //ignoring first and last spots
             _randomEnemyY = Random.Range(1, x - 1);
-            _enemyLoca = new Vector3(startingPointX + distanceBetweenEachTileX * _randomEnemyX, startingPointY + (distanceBetweenEachTileY + .3f) * -_randomEnemyY, -1);
-           GameObject _enemy= Instantiate(Enemy, _enemyLoca, FireBlock.transform.rotation);
+            while (Grid[_randomEnemyY, _randomEnemyX] == 0 || Grid[_randomEnemyY, _randomEnemyX]==-1)
+            {
+                _randomEnemyX = Random.Range(1, y - 1);
+                _randomEnemyY = Random.Range(1, x - 1);
+            }
+           
+            _enemyLoca = new Vector3(startingPointX + (distanceBetweenEachTileX * _randomEnemyX), startingPointY + ((distanceBetweenEachTileY + .3f) * (-_randomEnemyY)+distanceBetweenEachTileY), -1);
+           GameObject _enemy= Instantiate(Enemy, _enemyLoca, Enemy.transform.rotation);
             _enemy.transform.parent = transform;
             _enemycount++;
+            Grid[_randomEnemyY, _randomEnemyX] = -1;
         }
 
 
@@ -77,13 +92,12 @@ public class GridGenerator : MonoBehaviour
               
                
 
-                _pos = new Vector2(startingPointX + distanceBetweenEachTileX * j, startingPointY + (distanceBetweenEachTileY * -i)); //will keep adding
+                _pos = new Vector3(startingPointX + distanceBetweenEachTileX * j, startingPointY + (distanceBetweenEachTileY * -i),0); //will keep adding
 
 
 
                 GameObject _tile = Instantiate(Tile, _pos, Quaternion.identity); //for same row
-                _tile.transform.parent = transform;
-
+              
 
 
                 //instantiating Player

@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class PlayerControllerScript : MonoBehaviour
 {
-    private int _playerX, _playerY;
     private int _x, _y;
-    [SerializeField] GridGenerator _gridGenerator;
+    private GridGenerator _gridGenerator;
     [SerializeField] GameObject grid;
     private int xAxis=0, yAxis=0;
     private Animator _anim;
@@ -17,14 +16,20 @@ public class PlayerControllerScript : MonoBehaviour
     private bool canWalk = true;
     public int moves = 0;
     private TextMeshProUGUI _moveScore;
+    public static int objectivecurrentmoves;
    
  
     private void Start()
     {
+        _gridGenerator = GameObject.FindGameObjectWithTag("GridVariant").GetComponent<GridGenerator>();
         _x = _gridGenerator.x;
         _y = _gridGenerator.y;
+        xAxis = 0;
+        yAxis = 0;
        _anim= GetComponent<Animator>();
         _moveScore=GameObject.FindWithTag("MoveNum").GetComponent<TextMeshProUGUI>();
+
+
         
     }
     void Update()
@@ -66,17 +71,22 @@ public class PlayerControllerScript : MonoBehaviour
     {
         if(canWalk)
         {
+            if(moves > objectivecurrentmoves)
+            {
+                _anim.SetBool("Die", true);
 
-        
-        if (Input.GetKeyDown(KeyCode.D))
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
         {
             transform.rotation = new Quaternion(0, 0, 0, 0);
 
 
-            if (yAxis < _y - 1 && (GridGenerator.Grid[xAxis, yAxis + 1] == 1 || GridGenerator.Grid[xAxis, yAxis + 1] == 2))
+            if (yAxis < _y - 1 && (GridGenerator.Grid[xAxis, yAxis + 1] == 1 || GridGenerator.Grid[xAxis, yAxis + 1] == 2 || GridGenerator.Grid[xAxis, yAxis + 1] == -1))
             {
 
                 yAxis++;
+
                     moves++;
                 transform.Translate(1.2f, 0, 0);
 
@@ -105,7 +115,7 @@ public class PlayerControllerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             transform.rotation = new Quaternion(0, 180, 0, 0);
-            if (yAxis > 0 && (GridGenerator.Grid[xAxis, yAxis - 1] == 1 || GridGenerator.Grid[xAxis, yAxis - 1] == 2))
+            if (yAxis > 0 && (GridGenerator.Grid[xAxis, yAxis - 1] == 1 || GridGenerator.Grid[xAxis, yAxis - 1] == 2 || GridGenerator.Grid[xAxis, yAxis-1]==-1))
             {
 
                 yAxis--;
@@ -119,7 +129,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (xAxis > 0 && (GridGenerator.Grid[xAxis - 1, yAxis] == 1 || GridGenerator.Grid[xAxis - 1, yAxis] == 2))
+            if (xAxis > 0 && (GridGenerator.Grid[xAxis - 1, yAxis] == 1 || GridGenerator.Grid[xAxis - 1, yAxis] == 2 || GridGenerator.Grid[xAxis-1, yAxis] == -1))
             {
                 xAxis--;
                     moves++;
@@ -133,7 +143,7 @@ public class PlayerControllerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (xAxis < _x - 1 && (GridGenerator.Grid[xAxis + 1, yAxis] == 1 || GridGenerator.Grid[xAxis + 1, yAxis] == 2))
+            if (xAxis < _x - 1 && (GridGenerator.Grid[xAxis + 1, yAxis] == 1 || GridGenerator.Grid[xAxis + 1, yAxis] == 2 || GridGenerator.Grid[xAxis + 1, yAxis] == -1))
             {
                 xAxis++;
                     moves++;

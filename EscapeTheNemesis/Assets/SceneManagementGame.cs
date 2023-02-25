@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
+
 public class SceneManagementGame : MonoBehaviour
 {
-    private int count = 1;
-    [SerializeField] TMPro.TextMeshProUGUI _text;
-   
+    public static int count = 1;
+   private TextMeshProUGUI _text;
+
+    private void Start()
+    {
+        if(SceneManager.GetActiveScene().name != "Complete" && SceneManager.GetActiveScene().name !="MainMenu" && SceneManager.GetActiveScene().name!="Guide")
+        {
+            _text = GameObject.FindGameObjectWithTag("LevelNUM").GetComponent<TextMeshProUGUI>();
+            LevelName();
+        }
+            
+    }
     public void LoadGuide()
     {
         SceneManager.LoadScene("Guide");
@@ -42,14 +51,27 @@ public class SceneManagementGame : MonoBehaviour
     public void NextLevel()
     {
         count++;
-        SceneManager.LoadScene("Level" + count);
-        LevelName();
+        if(SceneManager.GetActiveScene().name=="Level4")
+        {
+            SceneManager.LoadScene("Complete");
+        }
+        else
+        {
+            SceneManager.LoadScene("Level" + count);
+            LevelName();
+        }
+     
 
     }
 
     public void LevelName() {
 
         _text.text = count.ToString("0");
-        Debug.Log(count);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        count = 1;
     }
 }

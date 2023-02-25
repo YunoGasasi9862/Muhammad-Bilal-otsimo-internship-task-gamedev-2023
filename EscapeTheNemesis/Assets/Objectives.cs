@@ -1,0 +1,40 @@
+
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+public class Objectives : MonoBehaviour
+{
+    public static int LEVEL1MOVES = 11;
+    public static int LEVEL2MOVES = 14;
+    public static int LEVEL3MOVES = 16;
+    public static int LEVEL4MOVES = 17;
+
+    [SerializeField] TextMeshProUGUI _levelObjective;
+
+    private void Start()
+    {
+        switch(SceneManager.GetActiveScene().name)
+        {
+            case "Level1":
+                _levelObjective.text = LEVEL1MOVES.ToString("0");
+                PlayerControllerScript.objectivecurrentmoves = LEVEL1MOVES;
+                break;
+            case "Level2":
+                _levelObjective.text = LEVEL2MOVES.ToString("0");
+                PlayerControllerScript.objectivecurrentmoves = LEVEL2MOVES;
+
+                break;
+            case "Level3":
+                _levelObjective.text = LEVEL3MOVES.ToString("0");
+                PlayerControllerScript.objectivecurrentmoves = LEVEL3MOVES;
+
+                break;
+            case "Level4":
+
+                _levelObjective.text = LEVEL4MOVES.ToString("0");
+                PlayerControllerScript.objectivecurrentmoves = LEVEL4MOVES;
+
+                break;
+        }
+    }
+}

@@ -68,11 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6779b3b4898bb544a4ecb7eca693321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridGenerator: {fileID: 4743121454323335220, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
-  grid: {fileID: 4743121454323335222, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
+  grid: {fileID: 7606896275581493073, guid: cbc2dd23bcd236a4c9a3154994cc127d, type: 3}
   nextLevel: {fileID: 7462595141307423813, guid: 22bc383ede2690144b6570ce19a01b86, type: 3}
   moves: 0
-  _moveScore: {fileID: 6231942888144587151, guid: 83b79e69ef87af24ab23caaec2b7059f, type: 3}
 --- !u!61 &-4192080854939211208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +116,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1001 &3025806392689766842
 PrefabInstance:

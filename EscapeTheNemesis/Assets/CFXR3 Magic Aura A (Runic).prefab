@@ -4927,7 +4927,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.99215686, g: 0.81830066, b: 0.47058818, a: 1}
-  m_Intensity: 0
+  m_Intensity: 2.8228798
   m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5009,6 +5009,7 @@ GameObject:
   - component: {fileID: 2788692994141145672}
   - component: {fileID: 2788692994141145719}
   - component: {fileID: 2788692994141145674}
+  - component: {fileID: 7419905509358501998}
   m_Layer: 0
   m_Name: CFXR3 Magic Aura A (Runic)
   m_TagString: Portal
@@ -9961,6 +9962,17 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 1
   fadeOutReference: {fileID: 2788692994141145719}
+--- !u!210 &7419905509358501998
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788692994141145718}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &2788692994307488492
 GameObject:
   m_ObjectHideFlags: 0

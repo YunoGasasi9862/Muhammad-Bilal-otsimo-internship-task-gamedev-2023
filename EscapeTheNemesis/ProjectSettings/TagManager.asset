@@ -9,6 +9,8 @@ TagManager:
   - Portal
   - FxTemporaire
   - MoveNum
+  - GridVariant
+  - LevelNUM
   layers:
   - Default
   - TransparentFX

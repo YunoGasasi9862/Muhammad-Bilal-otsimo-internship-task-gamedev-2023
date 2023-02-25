@@ -4732,6 +4732,7 @@ GameObject:
   - component: {fileID: 7302400191143167325}
   - component: {fileID: 7301818508202751519}
   - component: {fileID: 7350004332763340441}
+  - component: {fileID: -3193820155714510800}
   m_Layer: 0
   m_Name: CFX2_WWExplosion_C
   m_TagString: Untagged
@@ -9473,6 +9474,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
+--- !u!210 &-3193820155714510800
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462595141307423813}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
 --- !u!1 &7462684627805336141
 GameObject:
   m_ObjectHideFlags: 0

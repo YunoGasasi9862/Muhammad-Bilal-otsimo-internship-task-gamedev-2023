@@ -9,11 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4743121454323335222, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
       propertyPath: m_Name
-      value: GridGenerator
+      value: GridGenerator Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4743121454323335222, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743121454323335222, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
+      propertyPath: m_TagString
+      value: GridVariant
       objectReference: {fileID: 0}
     - target: {fileID: 4743121454323335223, guid: 44a7ca10dc4510e4883484cd7f9ce9e1, type: 3}
       propertyPath: m_RootOrder
